@@ -1,0 +1,88 @@
+@media (max-width: 1200px) {
+  .promo {
+    padding: 19px 0 85px 0;
+    &__header{
+      font-size: 40px;
+      line-height: 40px;
+    }
+    &__subheader {
+      font-size: 23px;
+      line-height: 23px;
+    }
+    
+  }
+  .adv {
+    .title {
+      font-size: 28px;
+    }
+  }    
+}
+@media (max-width: 991px) {
+  .header {
+    justify-content: space-around;
+    &__logo {
+      width: 20%;
+    }
+    &__official {
+      font-size: 11px;
+      font-weight: 300;
+      span {
+        font-size: 16px; 
+      }
+    }
+    &__phone {
+      font-size: 16px; 
+    }
+    button {
+      width: 120px;
+      height: 22px;
+      font-size: 10px;
+      font-weight: 300;   
+    }
+  }
+  .promo {
+    min-height: 550px;
+    &__wrapper{
+      margin-top: 65px;
+      align-items: center;
+    }
+    &__header{
+      font-size: 36px;
+      line-height: 40px;
+    }
+    &__subheader {
+      font-size: 18px;
+      line-height: 23px;
+    }
+    .button {
+      &_main {     
+        width: 250px;
+        height: 36px;
+        font-size: 14px;
+      }  
+    }
+    &__link {
+      font-size: 14px;
+    } 
+    
+  }
+  .adv {
+    padding: 50px 0 55px 0;
+    &__wrapper {
+      margin-top: 50px;
+    }
+    &__item{
+      max-width: 255px;
+    }
+    &__subtitle {
+      font-size: 15px;
+      margin-top: 26px;
+    }
+    &__text {
+      font-size: 11px;
+      margin-top: 18px;
+    }
+  }
+    
+}
+  
