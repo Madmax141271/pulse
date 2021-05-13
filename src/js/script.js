@@ -49,34 +49,75 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn('slow');
         });
     });
-    $('#consultation-form').validate();
-    $('#consultation form').validate({
-        rules: {
-            name: "reqired",
-            phone: "reqired",
-            email: {
-                reqired: true,
-                email: true
+
+    
+    
+    function valideForms(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Ваше имя",
+                    minlength: jQuery.validator.format("Минимум {0} символа!")
+                  },
+                phone: "Ваш телефон",
+                email: {
+                  required: "Ваш email",
+                  email: "Ваш формат почты должен быть name@domain.com"
+                }
             }
+        });
+
+    };
+    valideForms('#consultation-form');
+    valideForms('#consultation form');
+    valideForms('#order form');
+    $('input[name=phone]').mask("+7 (999) 999-99-99");
+
+    $('form').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function(){
+            $(this).find("input").val("");
+            $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+
+            $('form').trigger('reset');
+
+        });
+        return false;
+    });
+    // Scroll
+
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 1300) {
+            $('.pageup').fadeIn();
+        } else {
+            $('.pageup').fadeOut(); 
         }
     });
-    $('#order form').validate({
-        rules: {
-            name: "reqired",
-            phone: "reqired",
-            email: {
-                reqired: true,
-                email: true
-            }          
-        },
-        messages: {
-            name: "Пожалуйста введите свое имя",
-            phone: "Укажите свой тф",
-            email: {
-              required: "Нам необходим адрес вашей почты",
-              email: "Фомат вашей почты name@domain.com"
-            }
-        }
+    $("a[href=#up]").click(function(){
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
     });
+
+    new WOW().init();
     
 });
+
+   
+    
